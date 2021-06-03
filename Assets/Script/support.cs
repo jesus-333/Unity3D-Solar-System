@@ -16,6 +16,13 @@ public class support : MonoBehaviour
         Text txt = GameObject.Find("Orbit Points Text").GetComponent<Text>();
         txt.text = n_points + "";
     }
+
+    public static void setLineWidth(float width){
+        CelestialBodyV2.width = width;
+
+        Text txt = GameObject.Find("Line Width Text").GetComponent<Text>();
+        txt.text = width + "";
+    }
 }
 
 // Queue to manage orbit point (take from stackoverflow)

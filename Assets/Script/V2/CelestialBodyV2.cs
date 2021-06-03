@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class CelestialBodyV2 : MonoBehaviour
 {
-    [Range(0.01f, 0.5f)]
-    public float width = 0.2f;
+    public static float width = 0.2f;
 
     private Vector3 force, force_direction;
     public FixedSizedQueue<Vector3> orbit_points;
@@ -21,12 +20,16 @@ public class CelestialBodyV2 : MonoBehaviour
 
 
     void Awake(){
+        // Find the Rigidbody attached to this object and apply a random force
         rb_body = this.GetComponent<Rigidbody>();
+        rb_body.AddForce(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)));
 
+        // Find the LineRenderer attached to this object and set a random color for it
         this.GetComponent<LineRenderer>().enabled = true;
         lr = this.GetComponent<LineRenderer>();
         setRandomColorLineRenderer();
 
+        // Queue used to draw the orbit
         orbit_points = new FixedSizedQueue<Vector3>(UniverseConstants.n_points);
     }
 
