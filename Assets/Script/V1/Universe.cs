@@ -37,9 +37,3 @@ public class Universe : MonoBehaviour
         }
     }
 }
-
-public static class UniverseConstants{
-    public static float gravitational_constant = 6.674f;
-    // public static float physics_time_step = 0.01f;
-    public static float physics_time_step = Time.fixedDeltaTime;
-}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7998627037567742335}
   - component: {fileID: 3427955367081796687}
   - component: {fileID: 1193737620824273438}
-  - component: {fileID: -3483134313225356167}
+  - component: {fileID: 5295794479764176422}
   m_Layer: 0
   m_Name: V2_Earth
   m_TagString: Untagged
@@ -126,9 +126,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b0d96676843664439124e979de8f4f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initial_velocity: {x: 0, y: 0, z: 0}
+  n_points: 250
+  width: 0.1
   debug_var: 0
---- !u!120 &-3483134313225356167
+--- !u!120 &5295794479764176422
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,9 +169,7 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  m_Positions: []
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
