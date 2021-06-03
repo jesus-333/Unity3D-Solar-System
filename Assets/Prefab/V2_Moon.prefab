@@ -126,8 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b0d96676843664439124e979de8f4f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  n_points: 250
-  width: 0.1
+  width: 0.5
   debug_var: 0
 --- !u!120 &-7064466043386745135
 LineRenderer:
