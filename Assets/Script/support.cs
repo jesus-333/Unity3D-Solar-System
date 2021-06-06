@@ -7,12 +7,19 @@ using UnityEngine.UI;
 
 public class support : MonoBehaviour
 {
+    // Function linked to the slider to select how many past points save to draw the orbits
     public static void setNPoints(float n_points){
+        // Set the global variable of number of points
         UniverseConstants.n_points = (int)n_points;
 
+        // Update the list (queue) of points of each body
         CelestialBodyV2[] list_of_bodies = GameObject.FindObjectsOfType<CelestialBodyV2>();
-        foreach (CelestialBodyV2 body in list_of_bodies){ body.orbit_points.Size = (int)n_points; }
+        foreach (CelestialBodyV2 body in list_of_bodies){
+            body.orbit_points.Size = (int)n_points;
+            // body.orbit_points.Clear();
+        }
 
+        // Update label
         Text txt = GameObject.Find("Orbit Points Text").GetComponent<Text>();
         txt.text = n_points + "";
     }
@@ -25,7 +32,7 @@ public class support : MonoBehaviour
     }
 }
 
-// Queue to manage orbit point (take from stackoverflow)
+// Queue to manage orbit point (partially take from stackoverflow)
 public class FixedSizedQueue<T> : ConcurrentQueue<T>
 {
     private readonly object syncObject = new object();
@@ -48,6 +55,12 @@ public class FixedSizedQueue<T> : ConcurrentQueue<T>
                 base.TryDequeue(out outObj);
             }
         }
+    }
+
+    public new void Clear(){
+        int tmp_size = Size;
+        Size = 0;
+        Size = tmp_size;
     }
 
     public T[] convertToArray(){
