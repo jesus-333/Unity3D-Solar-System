@@ -7,6 +7,12 @@ using UnityEngine.UI;
 
 public class support : MonoBehaviour
 {
+    public bool use_queue_to_track_orbit = false;
+
+    public void Awake(){
+        UniverseConstants.use_queue_to_track_orbit = use_queue_to_track_orbit;
+    }
+
     // Function linked to the slider to select how many past points save to draw the orbits
     public static void setNPoints(float n_points){
         // Set the global variable of number of points
@@ -15,8 +21,7 @@ public class support : MonoBehaviour
         // Update the list (queue) of points of each body
         CelestialBodyV2[] list_of_bodies = GameObject.FindObjectsOfType<CelestialBodyV2>();
         foreach (CelestialBodyV2 body in list_of_bodies){
-            body.orbit_points.Size = (int)n_points;
-            // body.orbit_points.Clear();
+            body.orbit_points_queue.Size = (int)n_points;
         }
 
         // Update label
@@ -57,12 +62,6 @@ public class FixedSizedQueue<T> : ConcurrentQueue<T>
         }
     }
 
-    public new void Clear(){
-        int tmp_size = Size;
-        Size = 0;
-        Size = tmp_size;
-    }
-
     public T[] convertToArray(){
         T[] array = new T[Size];
         T tmp;
@@ -81,6 +80,7 @@ public static class UniverseConstants{
 
     public static int n_points = 250;
 
-    // public static float physics_time_step = 0.01f;
+    public static bool use_queue_to_track_orbit = false;
+
     public static float physics_time_step = Time.fixedDeltaTime;
 }
